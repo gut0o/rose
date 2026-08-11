@@ -15,23 +15,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const fallingPetalsEl = document.getElementById('fallingPetals');
     const scene = document.querySelector('.scene');
 
+    // Peonies are much fuller than roses: many overlapping, rounded petals
+    // build from a tight center into broad, softly opened outer layers.
     const PETAL_LAYERS = [
-        { count: 4, w: 24, h: 46, curl: 78, delayBase: 0, tz: 2, cls: 'petal-bud' },
-        { count: 5, w: 34, h: 58, curl: 65, delayBase: 0.25, tz: 9, cls: 'petal-core' },
-        { count: 6, w: 46, h: 72, curl: 48, delayBase: 0.55, tz: 18, cls: 'petal-inner' },
-        { count: 7, w: 58, h: 88, curl: 22, delayBase: 0.90, tz: 30, cls: 'petal-mid-inner' },
-        { count: 8, w: 72, h: 104, curl: -5, delayBase: 1.30, tz: 44, cls: 'petal-mid' },
-        { count: 9, w: 86, h: 118, curl: -25, delayBase: 1.75, tz: 60, cls: 'petal-outer' },
-        { count: 10, w: 98, h: 130, curl: -48, delayBase: 2.25, tz: 76, cls: 'petal-blush' },
+        { count: 6,  w: 22,  h: 34,  curl: 82,  delayBase: 0.00, tz: 3,  cls: 'petal-bud' },
+        { count: 8,  w: 30,  h: 43,  curl: 72,  delayBase: 0.16, tz: 8,  cls: 'petal-core' },
+        { count: 10, w: 40,  h: 54,  curl: 58,  delayBase: 0.34, tz: 15, cls: 'petal-inner' },
+        { count: 12, w: 52,  h: 66,  curl: 42,  delayBase: 0.56, tz: 23, cls: 'petal-mid-inner' },
+        { count: 14, w: 66,  h: 78,  curl: 24,  delayBase: 0.82, tz: 33, cls: 'petal-mid' },
+        { count: 16, w: 82,  h: 91,  curl: 5,   delayBase: 1.10, tz: 45, cls: 'petal-outer' },
+        { count: 18, w: 98,  h: 102, curl: -12, delayBase: 1.40, tz: 58, cls: 'petal-blush' },
+        { count: 20, w: 112, h: 110, curl: -25, delayBase: 1.72, tz: 72, cls: 'petal-guard' },
     ];
 
     const SEPALS_COUNT = 5;
 
     const FALLING_PETAL_COLORS = [
-        ['#9a001d', '#3d0008'],
-        ['#850018', '#2b0005'],
-        ['#ad0022', '#480008'],
-        ['#bf0028', '#52000c'],
+        ['#ffffff', '#d7d9df'],
+        ['#fffdf8', '#cfd2d8'],
+        ['#f8f8f6', '#bcc1ca'],
+        ['#ffffff', '#e2e3e7'],
     ];
 
     let fallingPetalInterval = null;
@@ -41,8 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const duration = 2400;
         const steps = [
             { threshold: 20, text: 'Loading Love.css...' },
-            { threshold: 50, text: 'Growing digital petals...' },
-            { threshold: 80, text: 'Adding velvet textures...' },
+            { threshold: 50, text: 'Growing peony petals...' },
+            { threshold: 80, text: 'Layering soft white petals...' },
             { threshold: 95, text: 'Optimizing 3D rendering...' },
             { threshold: 100, text: 'Ready to bloom!' }
         ];
@@ -96,9 +99,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const angle = layerOffset + i * angleStep + (Math.random() - 0.5) * 5;
                 const delay = layer.delayBase + i * 0.05;
-                const curlJitter = (Math.random() - 0.5) * 6;
-                const scaleJitter = 0.94 + Math.random() * 0.12;
-                const bloomDur = 2.1 + Math.random() * 0.4;
+                const curlJitter = (Math.random() - 0.5) * 10;
+                const scaleJitter = 0.90 + Math.random() * 0.18;
+                const bloomDur = 1.9 + Math.random() * 0.55;
 
                 petal.style.width = `${layer.w}px`;
                 petal.style.height = `${layer.h}px`;
@@ -108,6 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 petal.style.setProperty('--delay', `${delay}s`);
                 petal.style.setProperty('--tz', `${layer.tz}px`);
                 petal.style.setProperty('--bloom-dur', `${bloomDur}s`);
+                petal.style.setProperty('--ruffle', `${46 + Math.random() * 12}%`);
 
                 roseHead.appendChild(petal);
             }
