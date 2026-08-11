@@ -18,14 +18,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Peonies are much fuller than roses: many overlapping, rounded petals
     // build from a tight center into broad, softly opened outer layers.
     const PETAL_LAYERS = [
-        { count: 6,  w: 22,  h: 34,  curl: 82,  delayBase: 0.00, tz: 3,  cls: 'petal-bud' },
-        { count: 8,  w: 30,  h: 43,  curl: 72,  delayBase: 0.16, tz: 8,  cls: 'petal-core' },
-        { count: 10, w: 40,  h: 54,  curl: 58,  delayBase: 0.34, tz: 15, cls: 'petal-inner' },
-        { count: 12, w: 52,  h: 66,  curl: 42,  delayBase: 0.56, tz: 23, cls: 'petal-mid-inner' },
-        { count: 14, w: 66,  h: 78,  curl: 24,  delayBase: 0.82, tz: 33, cls: 'petal-mid' },
-        { count: 16, w: 82,  h: 91,  curl: 5,   delayBase: 1.10, tz: 45, cls: 'petal-outer' },
-        { count: 18, w: 98,  h: 102, curl: -12, delayBase: 1.40, tz: 58, cls: 'petal-blush' },
-        { count: 20, w: 112, h: 110, curl: -25, delayBase: 1.72, tz: 72, cls: 'petal-guard' },
+        { count: 5,  w: 22,  h: 34,  curl: 82,  delayBase: 0.00, tz: 3,  cls: 'petal-bud' },
+        { count: 6,  w: 30,  h: 43,  curl: 72,  delayBase: 0.14, tz: 8,  cls: 'petal-core' },
+        { count: 8,  w: 40,  h: 54,  curl: 58,  delayBase: 0.28, tz: 14, cls: 'petal-inner' },
+        { count: 9,  w: 52,  h: 66,  curl: 42,  delayBase: 0.44, tz: 22, cls: 'petal-mid-inner' },
+        { count: 10, w: 66,  h: 78,  curl: 24,  delayBase: 0.62, tz: 31, cls: 'petal-mid' },
+        { count: 11, w: 82,  h: 91,  curl: 5,   delayBase: 0.82, tz: 41, cls: 'petal-outer' },
+        { count: 12, w: 98,  h: 102, curl: -12, delayBase: 1.02, tz: 52, cls: 'petal-blush' },
+        { count: 13, w: 112, h: 110, curl: -25, delayBase: 1.24, tz: 64, cls: 'petal-guard' },
     ];
 
     const SEPALS_COUNT = 5;
@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function spawnFallingPetal() {
-        if (fallingPetalsEl.childElementCount > 10) return;
+        if (fallingPetalsEl.childElementCount > 5) return;
 
         const petal = document.createElement('div');
         petal.className = 'falling-petal';
@@ -182,13 +182,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function startFallingPetals() {
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < 2; i++) {
             setTimeout(() => spawnFallingPetal(), i * 300);
         }
 
         fallingPetalInterval = setInterval(() => {
             spawnFallingPetal();
-        }, 2200);
+        }, 3200);
     }
 
 
